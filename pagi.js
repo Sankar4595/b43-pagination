@@ -527,7 +527,26 @@ function clicking(e){
     var data = e.innerText;
     var data_ele = document.createElement('p');
     // console.log(data_ele.innerText);
-    data_ele.innerText = JSON.stringify(given_data[data-1]);
+    var result = "";
+    Object.entries(given_data[data-1]).forEach(([key,value])=>{
+          result+=`
+            <table>
+              <thead>
+                <tr>
+                  <th>${key}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${value}</td>
+                </tr>  
+              </tbody>
+            </table>
+              
+          `;
+          return result;
+    });
+    data_ele.innerHTML = result;
     parent.append(data_ele);
     
 }
